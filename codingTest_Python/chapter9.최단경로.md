@@ -102,27 +102,32 @@
          heapq.heappush(q,(0,start))
          distance[start]=0
          while q:
-             dist, now=heqpq.heappop(q)
+             dist, now=heapq.heappop(q)
              if distance[now]<dist:
                  continue
              for i in graph[now]:
-                 cost=dist+i[i]
+                 cost=dist+i[1]
                  if cost<distance[i[0]]:
-                     distnace[i[0]]=cost
-                     heqpq.heappush(q, (cost,i[0]))
+                     distance[i[0]]=cost
+                     heapq.heappush(q, (cost,i[0]))
      dijkstra(start)
-     ```
-
-     개선된 다익스트라 알고리즘의 시간 복잡도 : O(ElogV), E : 간선의 개수 V : 노드의 개수
-
-     =>다익스트라 알고리즘 : 한 지점에서 다른 특정 지점까지의 최단 경로를 구해야 하는 경우
-
-   - 플로이드 워셜 알고리즘
-
+     for i in range(1,n+1):
+      if distance[i]==INF:
+             print("INF")
+      else:
+             print(distance[i])
+  ```
+   
+  개선된 다익스트라 알고리즘의 시간 복잡도 : O(ElogV), E : 간선의 개수 V : 노드의 개수
+   
+  =>다익스트라 알고리즘 : 한 지점에서 다른 특정 지점까지의 최단 경로를 구해야 하는 경우
+   
+- 플로이드 워셜 알고리즘
+   
      모든 지점에서 다른 모든 지점까지의 최단 경로를 모두 구해야 하는 경우
-
+   
      다이나믹 프로그래밍(노드의 개수가 N일때, N번 반복하며 점화식에 맞게 2차원 리스트 갱신)
-
+   
      ```python
      INF=int(1e9)
      
@@ -139,14 +144,14 @@
          a,b,c=map(int,input().split())
          graph[a][b]=c
          
-     for k in range(1, n+1):
+  for k in range(1, n+1):
          for a in range(1, n+1):
-             for b in range(1, n+1):
+          for b in range(1, n+1):
                  graph[a][b]=min(graph[a][b], graph[a][k]+graph[k][b])
      ```
-
+   
    - p.385 플로이드
-
+   
      ```python
      INF=int(1e9)
      
@@ -170,17 +175,17 @@
              for b in range(1, n+1):
                  graph[a][b]=min(graph[a][b], graph[a][k]+graph[k][b])
      
-     for i in range(1, n+1):
+  for i in range(1, n+1):
          for j in range(1, n+1):
-             print(graph[i][j], end=' ')
+          print(graph[i][j], end=' ')
          print("")
      ```
-
-   - p.386 정확한 순위
-
+   
+- p.386 정확한 순위
+   
      ```python
      
      ```
-
+   
      
 
